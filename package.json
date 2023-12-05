@@ -1,0 +1,19 @@
+{
+  "name": "jsaqa-homeworks-7.6-cypress.2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:admin": "npx cypress run --record --group admin --spec \"cypress/e2e/admin_login.cy.js\" --ci-build-id 2",
+    "test:movie": "npx cypress run --record --group movie --spec \"cypress/e2e/movie.cy.js\" --ci-build-id 2",
+    "test:parallel": "run-p -c test:admin test:movie"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.6.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
