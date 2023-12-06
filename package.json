@@ -4,14 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:admin": "npx cypress run --record --group admin --spec \"cypress/e2e/admin_login.cy.js\" --ci-build-id 2",
-    "test:movie": "npx cypress run --record --group movie --spec \"cypress/e2e/movie.cy.js\" --ci-build-id 2",
-    "test:parallel": "run-p -c test:admin test:movie"
+    "test:admin:edge": "cypress run --record --group admin:edge --spec \"cypress/e2e/admin/admin_login.cy.js\" --browser edge",
+    "test:movie:edge": "cypress run --record --group movie:edge --spec \"cypress/e2e/movie/movie.cy.js\" --browser edge",
+    "test:parallel:edge": "run-p -c test:admin:edge test:movie:edge",
+    "test:admin:electron": "cypress run --record --group admin:electron --spec \"cypress/e2e/admin/admin_login.cy.js\" --browser electron",
+    "test:movie:electron": "cypress run --record --group movie:electron --spec \"cypress/e2e/movie/movie.cy.js\" --browser electron",
+    "test:parallel:electron": "run-p -c test:admin:electron test:movie:electron",
+    "test:admin:chrome": "cypress run --record --group admin:chrome --spec \"cypress/e2e/admin/admin_login.cy.js\" --browser \"C:/Program Files/Google/Chrome/Application/chrome.exe\"",
+    "test:movie:chrome": "cypress run --record --group movie:chrome --spec \"cypress/e2e/movie/movie.cy.js\" --browser \"C:/Program Files/Google/Chrome/Application/chrome.exe\"",
+    "test:parallel:chrome": "run-p -c test:admin:chrome test:movie:chrome",
+    "test:parallel:edge+electron": "run-p -c test:admin:edge test:movie:electron",
+    "test:parallel:edge+chrome": "run-p -c test:admin:edge test:movie:chrome",
+    "test:parallel:electron+edge": "run-p -c test:admin:electron test:movie:edge",
+    "test:parallel:electron+chrome": "run-p -c test:admin:electron test:movie:chrome",
+    "test:parallel:chrome+edge": "run-p -c test:admin:chrome test:movie:edge",
+    "test:parallel:chrome+electron": "run-p -c test:admin:chrome test:movie:electron",
+    "test:admin": "cypress run --record --group admin --spec \"cypress/e2e/admin/*\"",
+    "test:movie": "cypress run --record --group movie --spec \"cypress/e2e/movie/*\"",
+    "test:parallel:folders": "run-p -c test:admin test:movie"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.6.0"
+    "cypress": "^13.6.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
